@@ -38,11 +38,13 @@ public class menuController : MonoBehaviour
     }
 
     public void exit(){
-        SceneManager.LoadScene("StartMenu");
         Time.timeScale = 1f;
+        SceneManager.LoadScene("StartMenu");
     }
     public void gameWin(){
         Time.timeScale = 0f;
+        level += 1;
+        PlayerPrefs.SetInt("level", level);
         winImage.SetActive(true);
     }
     public void gameLose(){
@@ -50,16 +52,15 @@ public class menuController : MonoBehaviour
         loseImage.SetActive(true);
     }
     public void loadNextLevel(){
-        level += 1;
-        PlayerPrefs.SetInt("level", level);
         winImage.SetActive(false);
-        SceneManager.LoadScene("Level1");
         Time.timeScale = 1f;
+        SceneManager.LoadScene("Level1");
     }
 
     public void restart(){
         loseImage.SetActive(false);
-        SceneManager.LoadScene("Level1");
         Time.timeScale = 1f;
+        SceneManager.LoadScene("Level1");
+        
     }
 }

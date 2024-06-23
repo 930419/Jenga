@@ -9,13 +9,17 @@ public class foodCreate : MonoBehaviour
     public GameObject pan;
     Vector3 initialPos;
     public GameObject firstFood;
+    public GameObject foodFloor;
     [SerializeField] private GameObject foodPrefab;
     [SerializeField] private Transform foodManager;
+    [SerializeField] private float randomX;
     public List<GameObject> foods;
     public int whichFood = 0;
     // Start is called before the first frame update
     void Start()
     {
+        randomX = Random.Range(-2.3f, 0.5f) + 0.6f;
+        foodFloor.transform.position = new Vector2(randomX, foodFloor.transform.position.y);
         initialPos = pan.transform.position;
         foods.Add(firstFood);
     }
